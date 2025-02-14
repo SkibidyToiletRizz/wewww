@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine</title>
+    <style>
+        /* Mengatur body */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background-color: pink;
+            overflow: hidden;
+        }
+
+        /* Mengatur container konten */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Mengatur tampilan judul */
+        h1 {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        /* Menambahkan simbol hati besar */
+        .heart {
+            color: #e74c3c;
+            font-size: 4rem;
+            animation: pulse 1s infinite;
+        }
+
+        /* Efek denyut hati */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Efek hujan hati */
+        .heart-rain {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart-rain div {
+            position: absolute;
+            top: -10px;
+            font-size: 2rem;
+            color: #e74c3c;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heart-rain"></div>
+
+    <div class="container">
+        <h1>Happy Valentine, Arvina!</h1>
+        <div class="heart">❤️</div>
+        <p>Semoga hari ini penuh dengan cinta, kebahagiaan, dan momen indah bersama orang yang kamu sayang.</p>
+        <div class="footer">tau isi apa aja bolehlahh ya ❤️</div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('falling-heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.querySelector('.heart-rain').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
